@@ -16,19 +16,31 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mystyle.css') }}">
     @yield('css')
 </head>
 <body>
 
-    @include('admin.layouts.navbar')
+    <div id="app">
+      @include('admin.layouts.navbar')
 
-    @yield('content')
+      @yield('content')
 
-    @include('admin.layouts.footer')
+      @include('admin.layouts.footer')
+    </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    @yield('js')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#custom-message-btn').on('click', function() {
+                $('#custom-message ul').empty();
+                $('#custom-message').hide();
+            });
+        });
+    </script>
+    {{-- @yield('js') --}}
+    @stack('js')
 </body>
 </html>

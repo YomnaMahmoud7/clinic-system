@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
+use App\Admin;
+use App\Http\Requests\AdminRegisterRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,8 @@ class AdminsController extends Controller
      */
     public function index()
     {
-        //
+        $admins = Admin::latest()->paginate(5);
+        return view('admin.admins.index',compact('admins'));
     }
 
     /**
@@ -30,12 +33,25 @@ class AdminsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\AdminRegisterRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminRegisterRequest $request)
     {
-        //
+        if($request->ajax()){
+            
+            $admins = Admin::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'type' => $request->type,
+                'password' => bcrypt($request->password),
+            ]);
+
+            return response([
+                'data'      => $admins,
+                'message'   => 'Admin Created Successfully!'
+            ]);
+        }
     }
 
     /**
@@ -57,7 +73,19 @@ class AdminsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::find($id);
+
+        if ($admin) {
+            return response([
+                'data' => $admin,
+                'message' => 'success'
+            ]);
+        }
+
+        return response([
+            'data' => '',
+            'message' => 'error'
+        ]);
     }
 
     /**
@@ -69,7 +97,36 @@ class AdminsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $admin = Admin::find($id);
+
+            if (!$admin) {
+                return response([
+                    'data' => '',
+                    'message' => 'error'
+                ]);
+            }
+
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->type = $request->type;
+
+            if ($request->password != null) {
+                $this->validate($request, [
+                    'password' => 'required|confirmed|min:6'
+                ]);
+                
+                $admin->password = $request->password;
+            }
+
+            $admin->save();
+
+            return response([
+                'data' => $admin,
+                'message' => 'Admin Updated Successfully!'
+            ]);
+
+        }
     }
 
     /**
@@ -80,6 +137,23 @@ class AdminsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (request()->ajax()) {
+            $admin  = Admin::find($id);
+            $id     = $admin->id;
+
+            if ($admin) {
+                $admin->delete();
+
+                return response([
+                    'data'    => $id,
+                    'message' => 'success'
+                ]);
+            }
+
+            return response([
+                'data'      => '',
+                'message'   => 'error'
+            ]);
+        }
     }
 }

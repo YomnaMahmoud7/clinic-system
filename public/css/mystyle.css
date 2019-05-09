@@ -1,0 +1,41 @@
+.custom-message {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 30px;
+  z-index: 100000;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.custom-message-btn {
+	float: right;
+	background: none;
+	border: 1px solid #FFF;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	color: #FFF;
+}
+
+.custom-message-error {
+	background-color: #F44336;
+}
+
+.custom-message-success {
+	background-color: #4CAF50;
+}
+
+.custom-message-info {
+	background-color: #2196F3;
+}
+
+
+
+
+
+
+
+
+

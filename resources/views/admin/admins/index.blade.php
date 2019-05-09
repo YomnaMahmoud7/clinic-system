@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Roles
+Admins
 @endsection
 @section('page-title')
-<i class="fas fa-users"></i> Roles
+<i class="fas fa-users"></i> Admins
 @endsection
 
 @section('content')
@@ -31,30 +31,32 @@ Roles
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addAdminModal">Add Role</button>
-            <h4>Latest Roles</h4>
+            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addAdminModal">Add Admin</button>
+            <h4>Latest Admins</h4>
           </div>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
                 <th>#</th>
-                <th>Role</th>
-                <th>Permissions</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Type</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody id="tbody">
               <?php $i = 1; ?>
-              @foreach ($roles as $role)
-              <tr id="tr-{{ $role->id }}">
+              @foreach($admins as $admin)
+              <tr id="tr-{{ $admin->id }}">
                 <td>{{ $i }}</td>
-                <td>{{ $role->name }}</td>
-                <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
+                <td>{{ $admin->name }}</td>
+                <td>{{ $admin->email }}</td>
+                <td>{{ $admin->type }}</td>
                 <td>
-                  <button class="btn btn-success btn-sm" data-action="{{ route('roles.update', ['id' => $role->id]) }}" id="btnEdit">
+                  <button class="btn btn-success btn-sm" data-action="{{ route('admins.update', ['id' => $admin->id]) }}" id="btnEdit">
                     <i class="far fa-edit"></i> Edit
                   </button>
-                  <button class="btn btn-danger btn-sm" data-action="{{ route('roles.destroy', ['id' => $role->id]) }}" id="btnDelete">
+                  <button class="btn btn-danger btn-sm" data-action="{{ route('admins.destroy', ['id' => $admin->id]) }}" id="btnDelete">
                     <i class="far fa-trash-alt"></i> Delete
                   </button>
                 </td>
@@ -65,7 +67,7 @@ Roles
             <tfoot>
               <tr>
                 <td colspan="2"></td>
-                {{-- <td>{{ $roles->links() }}</td> --}}
+                <td>{{ $admins->links() }}</td>
               </tr>
             </tfoot>
           </table>

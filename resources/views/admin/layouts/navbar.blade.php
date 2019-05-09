@@ -1,6 +1,10 @@
 @guest
 
 @else
+<div class="custom-message" id="custom-message" style="display: none;">
+    <button class="custom-message-btn" id="custom-message-btn">×</button>
+    <ul></ul>
+</div>
 <!-- Navbar  -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
