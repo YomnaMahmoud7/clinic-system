@@ -65,6 +65,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		 */
 		Route::resource('roles', 'Roles\RolesController');
 		Route::resource('permissions', 'Roles\PermissionsController');
+
+			/**
+		 * Advices $ Drugs  Routes
+		 */
+		Route::resource('advices', 'Advices\AdvicesController');
+		Route::resource('drugs', 'Drugs\DrugsController');
 	});
 });
 
