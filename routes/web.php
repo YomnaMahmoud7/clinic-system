@@ -65,6 +65,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		 */
 		Route::resource('roles', 'Roles\RolesController');
 		Route::resource('permissions', 'Roles\PermissionsController');
+		Route::get('auth', function() {
+			$user    = User::where('type', 'user')->first();
+			dd(
+				/*$role = auth()->user()->roles->first(),
+				auth()->user()->permissions,
+				$role->permissions->pluck('id')*/
+				$user->roles[0]->permissions->pluck('name'),
+				$user->hasPermissionTo('User Delete')
+			);
+		});
 	});
 });
 

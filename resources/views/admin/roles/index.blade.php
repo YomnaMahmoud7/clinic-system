@@ -31,7 +31,7 @@ Roles
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addAdminModal">Add Role</button>
+            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addRoleModal">Add Role</button>
             <h4>Latest Roles</h4>
           </div>
           <table class="table table-striped">
@@ -49,7 +49,7 @@ Roles
               <tr id="tr-{{ $role->id }}">
                 <td>{{ $i }}</td>
                 <td>{{ $role->name }}</td>
-                <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
+                <td>{{ str_replace(array('[',']','"'),' ', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                 <td>
                   <button class="btn btn-success btn-sm" data-action="{{ route('roles.update', ['id' => $role->id]) }}" id="btnEdit">
                     <i class="far fa-edit"></i> Edit
@@ -62,20 +62,14 @@ Roles
               <?php $i++ ?>
               @endforeach
             </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="2"></td>
-                {{-- <td>{{ $roles->links() }}</td> --}}
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
     </div>
   </div>
 </section>
-@include('admin.admins.add_modal')
-@include('admin.admins.edit_modal')
+@include('admin.roles.add_modal')
+@include('admin.roles.edit_modal')
 @endsection
 
 @push('js')

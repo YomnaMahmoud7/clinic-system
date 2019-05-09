@@ -18,8 +18,12 @@ class PermissionsController extends Controller
     public function index()
     {
         $permissions = Permission::all();
+        $roles = Role::all();
 
-        return view('admin.permissions.index', ['permissions' => $permissions]);
+        return view('admin.permissions.index', [
+            'permissions' => $permissions,
+            'roles'         => $roles
+        ]);
     }
 
     /**
@@ -42,29 +46,34 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name'=>'required|max:40',
-        ]);
+        if ($request->ajax()) {
+            $this->validate($request, [
+                'name'=>'required|unique:permissions|max:40',
+            ]);
 
-        $name = $request['name'];
-        $permission = new Permission();
-        $permission->name = $name;
+            $name = $request['name'];
+            $permission = new Permission();
+            $permission->name = $name;
+            $permission->guard_name = $request->guard_name;
 
-        $roles = $request['roles'];
+            $roles = $request['roles'];
 
-        $permission->save();
+            $permission->save();
 
-        if (!empty($request['roles'])) { //If one or more role is selected
-            foreach ($roles as $role) {
-                $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
+            if (!empty($request['roles'])) { //If one or more role is selected
+                foreach ($roles as $role) {
+                    $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
 
-                $permission = Permission::where('name', '=', $name)->first(); //Match input //permission to db record
-                $r->givePermissionTo($permission);
+                    $permission = Permission::where('name', '=', $name)->first(); //Match input //permission to db record
+                    $r->givePermissionTo($permission);
+                }
             }
-        }
 
-        return redirect()->route('permissions.index')
-            ->with('flash_message', 'Permission'. $permission->name.' added!');
+            return response([
+                'data' => $permission,
+                'message' => 'Permission Added Successfully!'
+            ]);
+        }
     }
 
     /**
@@ -86,9 +95,14 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        $permission = Permission::findOrFail($id);
+        if (request()->ajax()) {
+            $permission = Permission::find($id);
 
-        return view('admin.permissions.edit', compact('permission'));
+            return response([
+                'data' => $permission,
+                'message' => 'success'
+            ]);
+        }
     }
 
     /**
@@ -100,15 +114,19 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permission = Permission::findOrFail($id);
-        $this->validate($request, [
-            'name'=>'required|max:40',
-        ]);
-        $input = $request->all();
-        $permission->fill($input)->save();
+        if ($request->ajax()) {
+            $permission = Permission::findOrFail($id);
+            $this->validate($request, [
+                'name'=>'required|max:40',
+            ]);
+            $input = $request->all();
+            $permission->fill($input)->save();
 
-        return redirect()->route('permissions.index')
-            ->with('flash_message', 'Permission'. $permission->name.' updated!');
+            return response([
+                'data' => $permission,
+                'message' => 'Permission Updated Successfully!'
+            ]);
+        }
     }
 
     /**
@@ -119,17 +137,24 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
-        $permission = Permission::findOrFail($id);
+        if (request()->ajax()) {
+            $permission = Permission::find($id);
+            $id = $permission->id;
 
-        //Make it impossible to delete this specific permission    
-        if ($permission->name == "Administer roles & permissions") {
-            return redirect()->route('permissions.index')
-                    ->with('flash_message', 'Cannot delete this Permission!');
+            //Make it impossible to delete this specific permission    
+            if ($permission->name == "Super Admin") {
+                return response([
+                    'data' => '',
+                    'message' => 'Can not delete this permission'
+                ]);
+            }
+
+            $permission->delete();
+
+            return response([
+                'data' => $id,
+                'message' => 'success'
+            ]);
         }
-
-        $permission->delete();
-
-        return redirect()->route('permissions.index')
-                    ->with('flash_message', 'Permission deleted!');
     }
 }
