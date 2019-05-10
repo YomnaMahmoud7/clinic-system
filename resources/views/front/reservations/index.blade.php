@@ -18,9 +18,9 @@
         <!-- Button to Open the Modal -->
         <div class="d-flex float-right">
           <div class="p-2 align-self-start">
-            <button type="button" class="btn btn-reversation" data-toggle="modal" data-target="#myModal">Add Apponintment</button>
+            <button type="button" class="btn btn-reversation" data-toggle="modal" data-target="#create_modal_reservation" id="create">Add Apponintment</button>
             <!-- The Modal -->
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="create_modal_reservation">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <!-- Modal Header -->
@@ -31,7 +31,7 @@
                   <!-- Modal body -->
                   <div class="modal-body">
                     
-                    <form class="form-horizontal" role="form" id="addform" method="POST"  >
+                    <form class="form-horizontal" role="form" id="addform" method="POST" action="/addreservation" >
                       {{ csrf_field() }}
                       <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                       <div class="form-group">
@@ -106,12 +106,12 @@
 
 
  <script type="text/javascript">
-  // $(document).on('click','#create_modal_reservation',function(){
-  //   $('#create').modal('show');
-  //   $('.form-horizontal').show();
-  //   $('.modal-title').text('Add Appointment');
+  $(document).on('click','#create_modal_reservation',function(){
+    $('#create').modal('show');
+    $('.form-horizontal').show();
+    
 
-  // });
+  });
 
 
   $('#add').click(function(){

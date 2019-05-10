@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Reservations;
+namespace App\Http\Controllers\Front\Reservations;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
