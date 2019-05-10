@@ -65,34 +65,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		 */
 		Route::resource('roles', 'Roles\RolesController');
 		Route::resource('permissions', 'Roles\PermissionsController');
-<<<<<<< HEAD
-		Route::get('auth', function() {
-			$user    = User::where('type', 'user')->first();
-			dd(
-				/*$role = auth()->user()->roles->first(),
-				auth()->user()->permissions,
-				$role->permissions->pluck('id')*/
-				$user->roles[0]->permissions->pluck('name'),
-				$user->hasPermissionTo('User Delete')
-			);
-		});
-=======
 
-			/**
+		/**
 		 * Advices $ Drugs  Routes
 		 */
 		Route::resource('advices', 'Advices\AdvicesController');
 		Route::resource('drugs', 'Drugs\DrugsController');
->>>>>>> b8360c5eea4f289686d9bd4c3676f9dc8c4e8ee2
 	});
 });
 
 Route::get('/fire', function() {
 	$user    = User::where('type', 'user')->first();
 	$doctor  = User::where('type', 'doctor')->first();
-  	
+
   	$current = auth()->user();
-  	
+
   	if ($current->type == 'user') {
     	$doctor->notify(new ReservationAdded());
   	} else {

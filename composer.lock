@@ -370,7 +370,6 @@
                 "trusted proxy"
             ],
             "time": "2019-01-10T14:06:47+00:00"
-<<<<<<< HEAD
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -554,8 +553,6 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
-=======
->>>>>>> b8360c5eea4f289686d9bd4c3676f9dc8c4e8ee2
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1207,16 +1204,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.9.1",
+            "version": "v1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "87125d5b265f98c4d1b8d83a1f0726607c229421"
+                "reference": "5d45f89d7872ce06da14e2607071bb3f828854ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/87125d5b265f98c4d1b8d83a1f0726607c229421",
-                "reference": "87125d5b265f98c4d1b8d83a1f0726607c229421",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/5d45f89d7872ce06da14e2607071bb3f828854ef",
+                "reference": "5d45f89d7872ce06da14e2607071bb3f828854ef",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1282,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2019-03-20T17:19:05+00:00"
+            "time": "2019-05-09T19:17:00+00:00"
         },
         {
             "name": "psr/container",
