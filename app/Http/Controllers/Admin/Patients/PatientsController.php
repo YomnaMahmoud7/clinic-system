@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Front\Patients;
+namespace App\Http\Controllers\Admin\Patients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

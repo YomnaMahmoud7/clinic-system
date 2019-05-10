@@ -31,20 +31,20 @@
                   <!-- Modal body -->
                   <div class="modal-body">
                     
-                    <form class="form-horizontal" role="form" id="addform" method="POST">
+                    <form class="form-horizontal" role="form" id="addform" method="POST"  >
                       {{ csrf_field() }}
                       <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Full Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Full name" name="fullname">
+                        <input type="text" class="form-control" placeholder="Enter Full name" name="name">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Mobile Phone</label>
-                        <input type="number" class="form-control" placeholder="Phone Number" name="phone">
+                        <input type="number" class="form-control" placeholder="Phone Number" name="mobile">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Date</label>
-                        <input type="date" class="form-control" placeholder="Enter Date" name="date">
+                        <input type="date" class="form-control" placeholder="Enter Date" name="date_add">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Email</label>
@@ -113,7 +113,6 @@
 
   // });
 
-  
 
   $('#add').click(function(){
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -138,6 +137,7 @@
           $('.error').text(data.errors.body);
           
         }else{
+          alert("data-inserted");
           // $('.error').remove();
           // $('#table').append("<tr class='post" + data.id + "'>"+
           // "<td>" + data.id + "</td>"+

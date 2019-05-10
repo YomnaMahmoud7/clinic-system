@@ -59,9 +59,11 @@ class ReservationsController extends Controller
         //
 
         //var_dump(Request);
+
         
     }
 
+  
     public function addReservation(Request $request){
       //   request()->validate([
       //       'title'=>'required',
@@ -84,7 +86,16 @@ class ReservationsController extends Controller
             $reservation=new Reservation();
             $patient =new Patient();
 
-            $patient->name=$request->patient_id;
+            $patient->name=request('name');
+            $patient->mobile=request('mobile');
+            $patient->email=request('email');
+            //status
+            if(Input::get('status') == 'true'){
+            $reservation->status=request('status');
+            }
+
+            $reservation->reason=request('reason');
+            $reservation->created_at=request('date_add');
             
             $reservation->save();
 

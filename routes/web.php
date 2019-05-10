@@ -23,6 +23,10 @@ Route::group(['namespace' => 'Front', 'middleware' => 'auth'], function() {
 	 */
 	Route::get('/home', 'HomeController@index')->name('home');
   	Route::get('/events', 'HomeController@events')->name('events');
+
+  	
+
+
 });
 
 
@@ -75,12 +79,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		/**
 		 * Patients $ Reservation  Routes
 		 */
-		Route::resource('patients','Patients\PatientsController');
+		
+		 Route::resource('patients','Patients\PatientsController');
 
 		Route::resource('reservations','Reservations\ReservationsController');
 
 		Route::post('/addreservation','Reservations\ReservationsController@addReservation')->name('addreservation');
-		 
 
 
 	});

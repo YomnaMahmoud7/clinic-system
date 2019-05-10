@@ -15,12 +15,12 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('status', ['new_reservation', 'follow_up'])->default('new_reservation');
+            $table->text('reason');
             $table->unsignedInteger('patient_id');
-
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
-         
         });
     }
 
