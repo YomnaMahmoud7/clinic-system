@@ -65,6 +65,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		 */
 		Route::resource('roles', 'Roles\RolesController');
 		Route::resource('permissions', 'Roles\PermissionsController');
+<<<<<<< HEAD
 		Route::get('auth', function() {
 			$user    = User::where('type', 'user')->first();
 			dd(
@@ -75,6 +76,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 				$user->hasPermissionTo('User Delete')
 			);
 		});
+=======
+
+			/**
+		 * Advices $ Drugs  Routes
+		 */
+		Route::resource('advices', 'Advices\AdvicesController');
+		Route::resource('drugs', 'Drugs\DrugsController');
+>>>>>>> b8360c5eea4f289686d9bd4c3676f9dc8c4e8ee2
 	});
 });
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use APP\Model\Advice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,6 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home.home');
+        $advices =Advice::latest()->paginate(5);
+        return view('admin.home.home',compact($advices));
     }
 }

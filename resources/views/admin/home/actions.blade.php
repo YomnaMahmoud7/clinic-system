@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+        <a href="{{ route('advices.index') }}" class="btn btn-primary btn-block">
           <i class="fas fa-plus"></i> Add Advice
         </a>
       </div>
       <div class="col-md-3">
-        <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+        <a href="{{ route('drugs.index') }}" class="btn btn-success btn-block" >
           <i class="fas fa-plus"></i> Add Medical Treatment
         </a>
       </div>

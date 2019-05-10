@@ -18,10 +18,10 @@
                     <a href="{{ route('admin.home') }}" class="nav-link active">Dashboard</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="posts.html" class="nav-link">Advices</a>
+                    <a href="{{ route('advices.index') }}" class="nav-link">Advices</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="categories.html" class="nav-link">Medical Treatment</a>
+                    <a href="{{ route('drugs.index') }}" class="nav-link">Medical Treatment</a>
                 </li>
                 <li class="nav-item px-2">
                   <a href="users.html" class="nav-link">Users</a>

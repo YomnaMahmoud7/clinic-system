@@ -38,7 +38,7 @@
                         <h4 class="display-4">
                             <i class="fas fa-pencil-alt"></i> 6
                         </h4>
-                        <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
+                        <a href="{{ route('advices.index') }}" class="btn btn-outline-light btn-sm">View</a>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         <h4 class="display-4">
                             <i class="fas fa-folder"></i> 4
                         </h4>
-                        <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+                        <a href="{{ route('drugs.index') }}" class="btn btn-outline-light btn-sm">View</a>
                     </div>
                 </div>
 
