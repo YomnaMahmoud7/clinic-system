@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @auth
     <meta name="userId" content="{{ auth()->user()->id }}">
+    <meta name="userType" content="{{ auth()->user()->type }}">
     @endauth
     <!-- Application Title -->
     <title>

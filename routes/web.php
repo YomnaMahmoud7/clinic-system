@@ -81,10 +81,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 Route::get('/fire', function() {
 	$user    = User::where('type', 'user')->first();
 	$doctor  = User::where('type', 'doctor')->first();
-  $current = auth()->user();
-  if ($current->type == 'user') {
-    $doctor->notify(new ReservationAdded());
-  } else {
-    $user->notify(new ReservationAdded());
-  }
+  	
+  	$current = auth()->user();
+  	
+  	if ($current->type == 'user') {
+    	$doctor->notify(new ReservationAdded());
+  	} else {
+    	$user->notify(new ReservationAdded());
+  	}
 });

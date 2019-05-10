@@ -61,26 +61,40 @@ function playSound(filename){
     document.getElementById("sound").innerHTML='<audio autoplay="autoplay">' + mp3Source + oggSource + embedSource + '</audio>';
 }
 
-var userId = $('meta[name=userId]').attr('content');
 
-window.Echo.private("App.User." + userId)
-	.notification((notification) => {
-		var body = '';
-		body += `
-		<li class="notification notification-unread">
-			<a href="#">
-				<div class="image">
-					<i class="far fa-user"></i>
-				</div>
-				<div class="notification-info">
-					<div class="text">
-						${notification.message}
-					</div>
-					<span class="date">${notification.time}</span>
-				</div>
-			</a>
-		</li>
-		`;
-      $('#notifications-body').prepend(body);
-      playSound('sounds/sound1');
-	});
+var colors = [
+	'#F44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#00BCD4', '#009688',
+	'#4CAF50', '#8BC34A', '#CDDC39', '#FFC107', '#FF9800', '#FF5722', '#795548', '#607D8B'
+];
+
+
+var userId = $('meta[name=userId]').attr('content');
+var userType = $('meta[name=userType]').attr('content');
+
+if (userType == 'user' || userType == 'doctor') {
+	window.Echo.private("App.User." + userId)
+		.notification((notification) => {
+			var body = '';
+			body += `
+			<li class="notification notification-unread">
+              <a href="#">
+                <div class="image" style="background: ${colors[Math.floor(Math.random() * colors.length)]}; color: #FFF;">
+                  <i class="far fa-user" style="margin-top: 10px;"></i>
+                </div>
+                <div class="notification-info">
+                  <div class="text">
+                    ${notification.message}
+                    <button style="background: none; border: none;"
+                      data-id="${notification.id}">
+                      <i class="fa fa-check" style="font-size: 14px;"></i>
+                    </button>
+                  </div>
+                  <span class="date">${notification.time}</span>
+                </div>
+              </a>
+            </li>
+			`;
+	      $('#notifications-body').prepend(body);
+	      playSound('sounds/sound1');
+		});
+}
