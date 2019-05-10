@@ -71,6 +71,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		 */
 		Route::resource('advices', 'Advices\AdvicesController');
 		Route::resource('drugs', 'Drugs\DrugsController');
+
+		/**
+		 * Patients $ Reservation  Routes
+		 */
+
+
+
 	});
 });
 
@@ -86,3 +93,9 @@ Route::get('/fire', function() {
     	$user->notify(new ReservationAdded());
   	}
 });
+
+Route::resource('/reservations','Front\Reservations\ReservationsController');
+
+Route::post('/addreservation','Front\Reservations\ReservationsController@addReservation')->name('addreservation');
+ Route::resource('/patients','Front\Patients\PatientsController');
+

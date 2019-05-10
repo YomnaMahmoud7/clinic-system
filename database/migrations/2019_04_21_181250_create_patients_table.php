@@ -22,6 +22,7 @@ class CreatePatientsTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('telephone')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male');
+            $table->enum('material_status', ['married', 'single'])->default('single');
             $table->string('address')->nullable();
             $table->softDeletes();
             $table->timestamps();
