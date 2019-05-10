@@ -21,4 +21,10 @@ class Patient extends Model
     {
         return $this->hasMany('App\Model\Rochta');
     }
+
+    public function reservations()
+    {
+        return $this->hasMany('App\Model\Reservation');
+    }
+    
 }

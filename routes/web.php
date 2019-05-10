@@ -75,7 +75,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 		/**
 		 * Patients $ Reservation  Routes
 		 */
+		Route::resource('patients','Patients\PatientsController');
 
+		Route::resource('reservations','Reservations\ReservationsController');
+
+		Route::post('/addreservation','Reservations\ReservationsController@addReservation')->name('addreservation');
+		 
 
 
 	});
@@ -94,8 +99,8 @@ Route::get('/fire', function() {
   	}
 });
 
-Route::resource('/reservations','Front\Reservations\ReservationsController');
+// Route::resource('reservations','Front\Reservations\ReservationsController');
 
-Route::post('/addreservation','Front\Reservations\ReservationsController@addReservation')->name('addreservation');
- Route::resource('/patients','Front\Patients\PatientsController');
+// Route::post('addreservation','Front\Reservations\ReservationsController@addReservation')->name('addreservation');
+//  Route::resource('patients','Front\Patients\PatientsController');
 
