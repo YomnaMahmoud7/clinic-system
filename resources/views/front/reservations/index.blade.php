@@ -2,6 +2,62 @@
 
 
 @section('content')
+
+
+<div class="dash-content">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="widget p-2">
+                <div class="d-flex text-center">
+                    <div class="pr-2 pl-2 align-self-start">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="pr-5 align-self-center">
+                        <h4>Apponintment</h4>
+                    </div>
+
+                    <div class="align-self-end">
+                        <p class="num-app"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget">
+                <div class="d-flex text-center">
+                    <div class="pr-2 pl-2 align-self-start">
+                        <i class="fas fa-users"></i> </div>
+                    <div class="pr-5 align-self-center">
+                        <h4>All Patients</h4>
+                    </div>
+
+                    <div class=" align-self-end">
+                        <p class="num_user"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget">
+                <div class="d-flex text-center">
+                    <div class="pr-2 pl-2 align-self-start">
+                        <i class="fas fa-file-invoice-dollar"></i> </div>
+                    <div class="pr-5 align-self-center">
+                        <h4>Inovices</h4>
+                    </div>
+
+                    <div class=" align-self-end">
+                        <p class="num-invo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--End Widget-->
+
 <div class="apponintment m-5">
   <div class="container">
     <div class="row">

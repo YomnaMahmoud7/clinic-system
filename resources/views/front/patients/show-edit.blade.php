@@ -65,12 +65,12 @@
                       <label>Gender :</label>
                       <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" name="gender"
-                               class="custom-control-input">
+                               class="custom-control-input" value="male">
                             <label class="custom-control-label" for="customRadioInline1">Male</label>
                          </div>
                          <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline2" name="gender"
-                               class="custom-control-input">
+                               class="custom-control-input" value="female">
                             <label class="custom-control-label" for="customRadioInline2">Female</label>
                          </div>
                    </div>
@@ -78,12 +78,12 @@
                       <label>Material Status :</label>
                       <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" name="material_status"
-                               class="custom-control-input">
+                               class="custom-control-input" value="married">
                             <label class="custom-control-label" for="customRadioInline1">Married</label>
                          </div>
                          <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline2" name="material_status"
-                               class="custom-control-input">
+                               class="custom-control-input" value="single">
                             <label class="custom-control-label" for="customRadioInline2">UnMarried</label>
                          </div>
                          <div class="div-action text-center">
@@ -91,9 +91,70 @@
 		                     <input type="submit"  name="cancel" class="btn btn-lg btn-info" value="Cancel">
                			</div>
                    </div>
+
                 </div>
           </div>
        </div>
     </div>
  <!--End Profile Details-->
+
+ <!--End Profile Details-->
+         <hr>
+<!--Medical History-->
+<!-- <div class="py-5">
+  <div class="container">
+     <div class="row">
+        <div class="col-md-4 text-center">
+              <i class="fas fa-briefcase-medical profile-icon fa-3x mb-2"></i>
+           </i>
+           <h2>Medical History</h2>
+        </div>
+        <div class="col-md-4">
+
+              <div class="question">
+                 <p class="lead">Is This The First Visit To The Dentist ?</p>
+                 <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                       class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                 </div>
+                 <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                       class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">No</label>
+                 </div>
+              </div>
+              <div class="question mt-2">
+                 <p class="lead">Do You Suffer From Any Diseases?</p>
+
+                 <div class="form-group">
+                    <input type="text" value="" data-role="tagsinput" class="form-control" />
+                 </div>
+
+              </div>
+           </div>
+        <div class="col-md-4">
+           <div class="question mb-1">
+              <p class="lead">Do You Take A Medications ?</p>
+              <div class="custom-control custom-radio custom-control-inline">
+                 <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                    class="custom-control-input">
+                 <label class="custom-control-label" for="customRadioInline1">Yes</label>
+
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                 <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                    class="custom-control-input">
+                 <label class="custom-control-label" for="customRadioInline2">No</label>
+              </div>
+              <textarea name="" id="" cols="30" rows="10" class="form-control mt-2"></textarea>
+
+           </div>
+
+
+        </div>
+    
+     </div>
+  </div>
+</div> -->
 @endsection

@@ -26,8 +26,8 @@ class Reservation extends Model
     public function patient()
     {
     	return $this->hasOne('App\Model\Patient', 'id', 'patient_id');
-        return $this->belongsTo('App\Model\Patient');
-        //::class
+        //return $this->belongsTo('App\Model\Patient');
+        
            
     }
 

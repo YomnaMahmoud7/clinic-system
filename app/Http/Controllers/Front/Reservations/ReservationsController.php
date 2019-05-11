@@ -54,17 +54,18 @@ class ReservationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         //
 
         //var_dump(Request);
 
+
         
     }
 
   
-    public function addReservation(Request $request){
+    public function addReservation(Request $request ,Patient $patient){
       //   request()->validate([
       //       'title'=>'required',
       //       'description'=>['required']
@@ -84,7 +85,7 @@ class ReservationsController extends Controller
         // }
        // else{
             $reservation=new Reservation();
-            $patient =new Patient();
+            //$patient =new Patient();
 
             $patient->name=request('name');
             $patient->mobile=request('mobile');
@@ -96,6 +97,9 @@ class ReservationsController extends Controller
 
             $reservation->reason=request('reason');
             $reservation->created_at=request('date_add');
+
+            $patient->reservations()->save($reservation);
+            //route ::post('patients/{patient}/addreservation'); ......> action of the form
             
             $reservation->save();
 

@@ -15,7 +15,7 @@ class Patient extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-    	'name', 'email', 'age', 'job', 'mobile', 'telephone', 'gender', 'address'
+    	'name', 'email', 'age', 'job', 'mobile', 'telephone', 'gender', 'address' , 'material_status'
     ];
     public function rochtas()
     {

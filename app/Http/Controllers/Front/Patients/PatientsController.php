@@ -1,11 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers\Front\Patients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Model\Patient;
+use App\Model\Reservation;
+
 
 class PatientsController extends Controller
 {
@@ -17,6 +18,7 @@ class PatientsController extends Controller
     public function index()
     {
         $patient =Patient::all();
+        
         return view('front.patients.index' , ['patientData'=>$patient]);
         //
       //  print_r($patient[1]->created_at);
@@ -105,15 +107,8 @@ class PatientsController extends Controller
         $patient->age=request('age');        
         $patient->job=request('job');
         $patient->mobile=request('mobile');
-        //$value_to_insert = Input::get('gender') == 'true' ? 1 : 0;
-
-        if(Input::get('gender') == 'true'){
-            $patient->gender=request('gender');
-        }
-        
-        if(Input::get('material_status') == 'true'){
-            $patient->material_status=request('material_status');
-        }
+        $patient->gender =request('gender');
+        // $patient->material_status =request('material_status');
 
         $patient->save();
 
